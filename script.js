@@ -18,7 +18,9 @@ const priceScreen = document.getElementById("price-screen");
 const cashDrawerDisplay = document.getElementById("cash-drawer-display");
 
 const formatResults = (status, change) => {
-  displayChangeDue.innerHTML = `<p>Status: ${status}</p>`;
+  displayChangeDue.innerHTML = `
+  <p><strong>Change Due</strong></p>
+  <p>Status: ${status}</p>`;
   change.map(
     (money) =>
       (displayChangeDue.innerHTML += `<p>${money[0]}: $${money[1]}</p>`),
@@ -52,7 +54,7 @@ const checkCashRegister = () => {
   );
 
   if (totalCID < changeDue) {
-    return (displayChangeDue.innerHTML = "<p>Status: INSUFFICIENT_FUNDS</p>");
+    return (displayChangeDue.innerHTML += "<p>Status: INSUFFICIENT_FUNDS</p>");
   }
 
   if (totalCID === changeDue) {
@@ -74,7 +76,7 @@ const checkCashRegister = () => {
     }
   }
   if (changeDue > 0) {
-    return (displayChangeDue.innerHTML = "<p>Status: INSUFFICIENT_FUNDS</p>");
+    return (displayChangeDue.innerHTML += "<p>Status: INSUFFICIENT_FUNDS</p>");
   }
 
   formatResults(result.status, result.change);
